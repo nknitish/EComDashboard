@@ -44,7 +44,8 @@ function Home() {
   };
 
   const handleLoadMore = () => {
-    setPage((currentPage) => currentPage + 1);
+    // alert("Reached to end");
+    // setPage((currentPage) => currentPage + 1);
   };
 
   return (

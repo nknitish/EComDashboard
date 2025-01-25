@@ -17,7 +17,7 @@ const ProductCard = ({ item, handleClick }) => {
   return (
     <Card
       variant="outlined"
-      className="w-full sm:w-[90%] md:w-[45%] mb-10 max-w-[400px]"
+      className="w-full sm:w-[100%] md:w-[45%] mb-10 max-w-[400px]"
     >
       <CardActionArea
         onClick={handleClick}

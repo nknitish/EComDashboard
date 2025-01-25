@@ -5,6 +5,7 @@ import { sortProduct } from "@/app/utilities/ProductUtilities";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import { Button } from "@mui/material";
+import ScrollableArea from "../molecules/ScrollableArea";
 
 // Lazy load components
 const CardModal = React.lazy(() => import("../atoms/CardModal"));
@@ -30,7 +31,7 @@ const Products = ({ handleLoadMore }) => {
   return (
     <Box
       component="main"
-      className="px-20 py-5 bg-slate-400 h-[100vh] overflow-scroll "
+      className="px-20 py-5 bg-slate-400 max-h-[100vh]"
       sx={{
         flexGrow: 1,
         width: { sm: `calc(100% - ${drawerWidth}px)` },
@@ -43,7 +44,10 @@ const Products = ({ handleLoadMore }) => {
         </div>
       </div>
 
-      <div className="flex flex-wrap justify-between">
+      <ScrollableArea
+        handleLoadMore={handleLoadMore}
+        className="flex flex-wrap justify-center sm:justify-between h-[80%] sm:h-[85%] w-full overflow-auto"
+      >
         {product.map((item) => (
           <ProductCard
             key={item?.id}
@@ -51,17 +55,13 @@ const Products = ({ handleLoadMore }) => {
             handleClick={() => handleCardClick(item)}
           />
         ))}
-      </div>
+      </ScrollableArea>
 
       <CardModal
         item={modalItem}
         open={open}
         handleClose={() => setOpen(false)}
       />
-
-      <Button disabled onClick={handleLoadMore}>
-        Load More..
-      </Button>
     </Box>
   );
 };
