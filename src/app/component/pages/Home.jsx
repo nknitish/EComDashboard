@@ -15,6 +15,7 @@ function Home() {
   const { setProduct, setProductRaw } = useContext(AppContext);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const [page, setPage] = useState(1);
 
   const { state: productList, isLoading } = useFetch(URLS.product, []);
 
@@ -42,6 +43,10 @@ function Home() {
     }
   };
 
+  const handleLoadMore = () => {
+    setPage((currentPage) => currentPage + 1);
+  };
+
   return (
     <Box sx={{ display: "flex" }}>
       <Header handleDrawerToggle={handleDrawerToggle} />
@@ -51,7 +56,7 @@ function Home() {
         handleDrawerTransitionEnd={handleDrawerTransitionEnd}
       />
       <Suspense fallback={<div>Loading...</div>}>
-        <Products mobileOpen={mobileOpen} />
+        <Products mobileOpen={mobileOpen} handleLoadMore={handleLoadMore} />
       </Suspense>
     </Box>
   );

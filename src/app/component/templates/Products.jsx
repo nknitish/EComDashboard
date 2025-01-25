@@ -4,13 +4,14 @@ import AppContext from "@/app/context/AppContext";
 import { sortProduct } from "@/app/utilities/ProductUtilities";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
+import { Button } from "@mui/material";
 
 // Lazy load components
 const CardModal = React.lazy(() => import("../atoms/CardModal"));
 const Select = React.lazy(() => import("../atoms/Select"));
 const ProductCard = React.lazy(() => import("../molecules/ProductCard"));
 
-const Products = ({}) => {
+const Products = ({ handleLoadMore }) => {
   const { product, setProduct } = useContext(AppContext);
   const [sortBy, setSortBy] = useState(defaultSortBy.value);
   const [open, setOpen] = useState(false);
@@ -57,6 +58,10 @@ const Products = ({}) => {
         open={open}
         handleClose={() => setOpen(false)}
       />
+
+      <Button disabled onClick={handleLoadMore}>
+        Load More..
+      </Button>
     </Box>
   );
 };

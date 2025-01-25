@@ -22,7 +22,7 @@ export const sortByList = [
 ];
 
 export const URLS = {
-  product: "https://fakestoreapi.com/products",
+  product: "https://fakestoreapi.com/products?page=1&limit=100",
   categories: "https://fakestoreapi.com/products/categories",
 };
 
