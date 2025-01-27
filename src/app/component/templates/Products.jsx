@@ -1,10 +1,9 @@
-import React, { useContext, useState } from "react";
 import { defaultSortBy, drawerWidth } from "@/app/constants/constant";
 import AppContext from "@/app/context/AppContext";
 import { sortProduct } from "@/app/utilities/ProductUtilities";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import { Button } from "@mui/material";
+import React, { useContext, useState } from "react";
 import ScrollableArea from "../molecules/ScrollableArea";
 
 // Lazy load components
@@ -48,9 +47,9 @@ const Products = ({ handleLoadMore }) => {
         handleLoadMore={handleLoadMore}
         className="flex flex-wrap justify-center sm:justify-between h-[80%] sm:h-[85%] w-full overflow-auto"
       >
-        {product.map((item) => (
+        {product.map((item, index) => (
           <ProductCard
-            key={item?.id}
+            key={`${item?.id} ${index}`}
             item={item}
             handleClick={() => handleCardClick(item)}
           />

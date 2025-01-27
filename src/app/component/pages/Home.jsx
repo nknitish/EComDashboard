@@ -17,14 +17,14 @@ function Home() {
   const [isClosing, setIsClosing] = useState(false);
   const [page, setPage] = useState(1);
 
-  const { state: productList, isLoading } = useFetch(URLS.product, []);
+  const { state: productList, isLoading } = useFetch(URLS.product(page), []);
 
   useEffect(() => {
     if (productList.length) {
       // keep it original to reset filter and soring
-      setProductRaw([...productList]);
+      setProductRaw((curent) => [...curent, ...productList]);
       // for sorting and filtering
-      setProduct(productList);
+      setProduct((current) => [...current, ...productList]);
     }
   }, [productList]);
 
@@ -44,8 +44,7 @@ function Home() {
   };
 
   const handleLoadMore = () => {
-    // alert("Reached to end");
-    // setPage((currentPage) => currentPage + 1);
+    setPage((currentPage) => currentPage + 1);
   };
 
   return (

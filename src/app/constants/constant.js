@@ -22,7 +22,8 @@ export const sortByList = [
 ];
 
 export const URLS = {
-  product: "https://fakestoreapi.com/products?page=1&limit=100",
+  product: (page = 1) =>
+    `https://fakestoreapi.com/products?page=${page}&limit=100`,
   categories: "https://fakestoreapi.com/products/categories",
 };
 
